@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -12,12 +13,17 @@ export class SignupComponent implements OnInit {
     password: ''
   };
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   ngOnInit() {
   }
 
-  signup(){
-    console.log('1');
+  signup() {
+    const formData = this.signupForm;
+    this.http.post('http://106.15.206.216:3000/users', formData).toPromise().then((data: any) =>{
+      console.log(data);
+     });
   }
 }
