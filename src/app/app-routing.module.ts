@@ -14,7 +14,7 @@ import { TodomvcComponent } from './todomvc/todomvc.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/layout',
+    redirectTo: '/signup',
     pathMatch:  'full'
   },
   {

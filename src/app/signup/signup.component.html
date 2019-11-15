@@ -6,23 +6,55 @@
         <h1>Login Form</h1>
         <div class="alert-close"> </div>
       </div>
-      <form>
+      <form #form="ngForm" (submit)="signup()">
         <li>
           <input type="text" class="text" value="Username" onfocus="this.value = '';"
-            onblur="if (this.value == '') {this.value = 'Username';}"><a href="#" class=" icon user"></a>
+            onblur="if (this.value == '') {this.value = 'Username';}"
+            required email="true"
+            name="email"
+            [(ngModel)]="signupForm.email"
+            #email="ngModel"
+            ><a href="#" class=" icon user"></a>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                <div *ngIf="email.errors.required">
+                  Email is required.
+                </div>
+                <div *ngIf="email.errors.email">
+                  Invalid Email.
+                </div>
+            </div>
+
+            <div *ngIf="email_err_msg" class="alert alert-danger">
+                {{ email_err_msg }}
+            </div>
         </li>
         <div class="clear"> </div>
         <li>
           <input type="password" value="Password" onfocus="this.value = '';"
-            onblur="if (this.value == '') {this.value = 'Password';}"> <a href="#" class="icon lock"></a>
+            onblur="if (this.value == '') {this.value = 'Password';}"
+            name="password"
+            required 
+            minlength="6"
+            maxlength="18"
+            [(ngModel)]="signupForm.password"
+            #password="ngModel"
+            > <a href="#" class="icon lock"></a>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                <div *ngIf="password.errors.required">
+                  Password is required.
+                </div>
+                <div *ngIf="password.errors.minlength">
+                  Password minlength 6.
+                </div>
+            </div>
         </li>
         <div class="clear"> </div>
         <div class="submit">
-          <input type="submit" onclick="myFunction()" value="Sign in">
-          <h4><a href="#">Lost your Password ?</a></h4>
+          <!-- <input  type="submit"  value="Sign up"> -->
+          <button class="btn btn-lg btn-success btn-block" [disabled]="!form.form.valid" type="submit">Sign up</button>
+          <h4><a href="#">Already have an account? Login here.</a></h4>
           <div class="clear"> </div>
         </div>
-
       </form>
     </div>
   </div>
