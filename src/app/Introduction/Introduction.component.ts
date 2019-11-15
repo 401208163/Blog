@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./Introduction.component.css']
 })
 export class IntroductionComponent implements OnInit {
+  public visibility = 'intorduction';
 
   constructor() { }
 

@@ -25,7 +25,7 @@
  body{
    font-family: 'Droid Sans', sans-serif;
    font-size:100%;
-   background: url('../../../imges/bg.jpg');
+   background-color: green;
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-position: center;
@@ -41,7 +41,7 @@
  }
  .login-head {
    padding: 2em 0;
-   background: #6D4A70;
+   background: green;
    position:relative;
  }
  .login-head h1 {

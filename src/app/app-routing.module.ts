@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from './auth-guard.service';
+
 import { LayoutComponent } from './layout/layout.component';
 
 import { SigninComponent } from './signin/signin.component';
@@ -14,12 +16,13 @@ import { TodomvcComponent } from './todomvc/todomvc.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/signup',
+    redirectTo: '/layout',
     pathMatch:  'full'
   },
   {
     path: 'layout',
     component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -47,6 +50,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
